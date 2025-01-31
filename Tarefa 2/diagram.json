@@ -44,8 +44,8 @@
       "type": "wokwi-pushbutton",
       "id": "btn1",
       "top": 6.2,
-      "left": -96,
-      "attrs": { "color": "black" }
+      "left": -124.8,
+      "attrs": { "color": "red" }
     }
   ],
   "connections": [
@@ -60,8 +60,8 @@
     [ "pico:GND.2", "led2:C", "black", [ "h-198.05", "v73.55" ] ],
     [ "pico:GND.2", "led3:C", "black", [ "h-198.05", "v-3.25" ] ],
     [ "r3:2", "pico:GP13", "green", [ "v0", "h37.2", "v-38.4" ] ],
-    [ "pico:GND.1", "btn1:1.r", "black", [ "h0" ] ],
-    [ "pico:GP5", "btn1:2.r", "green", [ "h-19.2", "v-19.2" ] ]
+    [ "btn1:2.r", "pico:GP5", "green", [ "h29", "v19.4" ] ],
+    [ "btn1:1.r", "pico:GND.1", "black", [ "v0" ] ]
   ],
   "dependencies": {}
 }
