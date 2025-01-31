@@ -11,9 +11,9 @@ int64_t turn_off_callback(alarm_id_t id, void *user_data)
     if(LED_PINO != 14){
     gpio_put(LED_PINO, false);
     LED_PINO++;
-    // Retorna 0 para indicar que o alarme não deve se repetir.
     return 3000000;}
     else{
+        LED_PINO = 11;
         return 0;
     }
 }

@@ -40,5 +40,6 @@ void gpio_irq_handler(uint gpio, uint32_t events)
         led_active = true;
 
         add_alarm_in_ms(3000, turn_off_callback, NULL, false);
+        led_active = false;
     }
 }
