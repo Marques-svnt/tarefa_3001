@@ -11,22 +11,25 @@ bool repeating_timer_callback(struct repeating_timer *t) {
     // Liga o led vermelho
     if(index == 0){
         gpio_put(VERMELHO, true);
-        gpio_put(AMARELO, false);
+        gpio_put(AZUL, false);
         gpio_put(VERDE, false);
+        printf("Led vermelho acesso!\n");
         index++;
 
-    // Liga o led amarelo
+    // Liga o led amarelo (ligamos os leds vermelho e verde para fazer amarelo)
     } else if (index == 1){
-        gpio_put(VERMELHO, false);
-        gpio_put(AMARELO, true);
-        gpio_put(VERDE, false);
+        gpio_put(VERMELHO, true);
+        gpio_put(AZUL, false);
+        gpio_put(VERDE, true);
+        printf("Led amarelo acesso!\n");
         index++;
 
     // Liga o led verde
     } else if (index == 2){
         gpio_put(VERMELHO, false);
-        gpio_put(AMARELO, false);
+        gpio_put(AZUL, false);
         gpio_put(VERDE, true);
+        printf("Led verde acesso!\n");
         index = 0;
     }
     return true; // Continua o temporizador

@@ -3,9 +3,9 @@
 
 void init();
 
-// Definições dos leds
-#define VERMELHO 11
-#define AMARELO 12
-#define VERDE 13
+// Definições dos leds RGB
+#define VERDE 11
+#define AZUL 12
+#define VERMELHO 13
 
 #endif
