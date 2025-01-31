@@ -3,8 +3,8 @@
 
 void init();
 
-#define VERMELHO 12
-#define AMARELO 13
-#define VERDE 14
+#define VERMELHO 11
+#define AMARELO 12
+#define VERDE 13
 
 #endif
