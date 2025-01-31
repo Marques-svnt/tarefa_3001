@@ -2,7 +2,8 @@
 #include "pico/stdlib.h"
 #include "init.h"
 
-void init(){
+void init()
+{
     // Inicializa todos os pinos
     gpio_init(VERMELHO);
     gpio_init(AZUL);

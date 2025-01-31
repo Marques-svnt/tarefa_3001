@@ -6,13 +6,14 @@
 // Variáveis globais
 static volatile uint a = 1;
 static volatile uint32_t last_time_A = 0; // Armazena o tempo do último evento (em microssegundos)
-bool led_active = false;    // Indica se o LED está atualmente aceso (para evitar múltiplas ativações).
-
+bool led_active = false;                  // Indica se o LED está atualmente aceso (para evitar múltiplas ativações).
 
 // Função responsável pelo debounce
-bool debounce(volatile uint32_t *last_time, uint32_t debounce_time) {
+bool debounce(volatile uint32_t *last_time, uint32_t debounce_time)
+{
     uint32_t current_time = to_us_since_boot(get_absolute_time());
-    if (current_time - *last_time > debounce_time) {
+    if (current_time - *last_time > debounce_time)
+    {
         *last_time = current_time;
         return true;
     }
@@ -20,12 +21,14 @@ bool debounce(volatile uint32_t *last_time, uint32_t debounce_time) {
 }
 
 // Função de interrupção com debouncing
-void gpio_irq_handler(uint gpio, uint32_t events) {
+void gpio_irq_handler(uint gpio, uint32_t events)
+{
 
     uint32_t current_time = to_us_since_boot(get_absolute_time());
 
     // Incrementação do número da matriz de leds
-    if (gpio == BUTTON_A && debounce(&last_time_A, 200000) && !led_active) {
+    if (gpio == BUTTON_A && debounce(&last_time_A, 200000) && led_active == false)
+    {
 
         last_time_A = current_time;
         printf("A: %d\n", a); // Para controle quando se usa o monitor serial para verificar se há bouncing
@@ -40,6 +43,5 @@ void gpio_irq_handler(uint gpio, uint32_t events) {
         led_active = true;
 
         add_alarm_in_ms(3000, turn_off_callback, NULL, false);
-        led_active = false;
     }
 }

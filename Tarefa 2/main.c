@@ -13,10 +13,11 @@ int main()
 
     // Configuração da interrupção com callback
     gpio_set_irq_enabled_with_callback(BUTTON_A, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
-    
+
     // Loop Principal
-    while (true) {
-        sleep_ms(1000); // Reduz o uso da CPU
+    while (true)
+    {
+        sleep_ms(1000);                // Reduz o uso da CPU
         printf("Tempo passando...\n"); // Mensagem para verificar passagem de tempo
     }
 }
