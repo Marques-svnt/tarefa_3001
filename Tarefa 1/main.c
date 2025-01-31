@@ -7,7 +7,6 @@
 int main()
 {
     stdio_init_all();
-    init();
 
     while (true) {
         printf("Hello, world!\n");
