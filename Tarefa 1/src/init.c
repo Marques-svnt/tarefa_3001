@@ -3,6 +3,7 @@
 #include "init.h"
 
 void init(){
+    // Inicializa todos os pinos
     gpio_init(VERMELHO);
     gpio_init(AMARELO);
     gpio_init(VERDE);
