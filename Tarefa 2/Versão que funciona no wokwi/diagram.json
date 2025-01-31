@@ -10,8 +10,14 @@
       "left": 3.55,
       "attrs": { "builder": "pico-sdk" }
     },
-    { "type": "wokwi-led", "id": "led1", "top": 63.6, "left": -169, "attrs": { "color": "blue" } },
-    { "type": "wokwi-led", "id": "led2", "top": 102, "left": -169, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led1", "top": 63.6, "left": -169, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 102,
+      "left": -169,
+      "attrs": { "color": "yellow" }
+    },
     {
       "type": "wokwi-led",
       "id": "led3",
@@ -39,13 +45,6 @@
       "top": 157.55,
       "left": -115.2,
       "attrs": { "value": "330" }
-    },
-    {
-      "type": "wokwi-pushbutton",
-      "id": "btn1",
-      "top": 6.2,
-      "left": -96,
-      "attrs": { "color": "black" }
     }
   ],
   "connections": [
@@ -59,9 +58,8 @@
     [ "pico:GND.2", "led1:C", "black", [ "h-198.05", "v25.55" ] ],
     [ "pico:GND.2", "led2:C", "black", [ "h-198.05", "v73.55" ] ],
     [ "pico:GND.2", "led3:C", "black", [ "h-198.05", "v-3.25" ] ],
-    [ "r3:2", "pico:GP13", "green", [ "v0", "h37.2", "v-38.4" ] ],
-    [ "pico:GND.1", "btn1:1.r", "black", [ "h0" ] ],
-    [ "pico:GP5", "btn1:2.r", "green", [ "h-19.2", "v-19.2" ] ]
+    [ "r3:2", "pico:GP13", "green", [ "v0", "h37.2", "v-38.4" ] ]
   ],
   "dependencies": {}
 }
+

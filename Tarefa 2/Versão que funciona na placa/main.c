@@ -3,17 +3,17 @@
 #include "hardware/timer.h"
 #include "init.h"
 #include "temporizador.h"
-#include "interrupt.h"
 
 int main()
 {
     // Inicializações
     stdio_init_all();
     init();
-    
-    // Configuração da interrupção com callback
-    gpio_set_irq_enabled_with_callback(BUTTON_A, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
+    // Configura o temporizador repetitivo para 3000ms
+    struct repeating_timer timer;
+    add_repeating_timer_ms(3000, repeating_timer_callback, NULL, &timer);
+    
     // Loop Principal
     while (true) {
         sleep_ms(1000); // Reduz o uso da CPU

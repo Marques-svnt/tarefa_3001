@@ -3,34 +3,14 @@
 #include "hardware/timer.h"
 #include "init.h"
 
-static volatile uint index = 1; /* Váriavel que vai controlar o estado do led (a inicialização em 1
-                                deve-se ao fato de que na função de init já está definido para o pino começar vermelho)*/
+// Função de callback para desligar o LED após o tempo programado.
+int64_t turn_off_callback(alarm_id_t id, void *user_data) {
 
-// Função de retorno de chamada (callback) associada a um temporizador repetitivo
-bool repeating_timer_callback(struct repeating_timer *t) {
-    // Liga o led vermelho
-    if(index == 0){
-        gpio_put(VERMELHO, true);
-        gpio_put(AZUL, false);
-        gpio_put(VERDE, false);
-        printf("Led vermelho acesso!\n");
-        index++;
+    // Desliga o LED configurando o pino LED_PIN para nível baixo.
+    gpio_put(LED_PIN, false);
 
-    // Liga o led amarelo (ligamos os leds vermelho e verde para fazer amarelo)
-    } else if (index == 1){
-        gpio_put(VERMELHO, false);
-        gpio_put(AZUL, true);
-        gpio_put(VERDE, false);
-        printf("Led amarelo acesso!\n");
-        index++;
+    // Atualiza o estado de 'led_active' para falso, indicando que o LED está desligado.
+    led_active = false;
 
-    // Liga o led verde
-    } else if (index == 2){
-        gpio_put(VERMELHO, false);
-        gpio_put(AZUL, false);
-        gpio_put(VERDE, true);
-        printf("Led verde acesso!\n");
-        index = 0;
-    }
-    return true; // Continua o temporizador
-}
+    // Retorna 0 para indicar que o alarme não deve se repetir.
+    return 0;}
