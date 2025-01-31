@@ -1,6 +1,6 @@
 #ifndef TEMPORIZADOR_H
 #define TEMPORIZADOR_H
 
-void temporizador();
+bool repeating_timer_callback(struct repeating_timer *t);
 
 #endif
