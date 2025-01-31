@@ -7,7 +7,7 @@
 static volatile uint a = 1;
 static volatile uint32_t last_time_A = 0; // Armazena o tempo do último evento (em microssegundos)
 
-bool led_active = false;    // Indica se o LED está atualmente aceso (para evitar múltiplas ativações).
+bool led_active = false;        // Indica se o LED está atualmente aceso (para evitar múltiplas ativações).
 absolute_time_t turn_off_time;  // Variável para armazenar o tempo em que o LED deve ser desligado (não utilizada neste código).
 
 // Função responsável pelo debounce
@@ -39,8 +39,6 @@ void gpio_irq_handler(uint gpio, uint32_t events)
         // Define 'led_active' como true para indicar que o LED está aceso.
         led_active = true;
 
-        // Agenda um alarme para desligar o LED após 3 segundos (3000 ms).
-        // A função 'turn_off_callback' será chamada após esse tempo.
-        add_alarm_in_ms(3000, Led, turn_off_callback, NULL, false);
+        add_alarm_in_ms(3000, turn_off_callback, NULL, false);
     }
 }
