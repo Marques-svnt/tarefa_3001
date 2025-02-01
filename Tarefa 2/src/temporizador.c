@@ -3,11 +3,11 @@
 #include "hardware/timer.h"
 #include "init.h"
 
-extern bool led_active;
+extern bool led_active; // Exportação do booleano que foi inicializado na função interrupt.c
 
-static volatile uint LED_PINO = 11;
+static volatile uint LED_PINO = 11; // Váriavel para controle de qual pino desligar 
 
-// Função de callback para desligar o LED após o tempo programado.
+// Função de callback para desligar os LEDs após o tempo programado e realizar 3 repetições
 int64_t turn_off_callback(alarm_id_t id, void *user_data)
 {
     if (LED_PINO != 13)

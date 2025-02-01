@@ -3,7 +3,7 @@
 
 void init();
 
-// Definições dos leds RGB
+// Definições dos leds RGB e do botão
 #define VERMELHO 13
 #define AZUL 12
 #define VERDE 11

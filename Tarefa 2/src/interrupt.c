@@ -26,7 +26,7 @@ void gpio_irq_handler(uint gpio, uint32_t events)
 
     uint32_t current_time = to_us_since_boot(get_absolute_time());
 
-    // Incrementação do número da matriz de leds
+    // Condição que vai disparar a função apenas quando os leds estiverem desligados e realizar o debounce no press do botão
     if (gpio == BUTTON_A && debounce(&last_time_A, 200000) && led_active == false)
     {
 
@@ -34,14 +34,15 @@ void gpio_irq_handler(uint gpio, uint32_t events)
         printf("A: %d\n", a); // Para controle quando se usa o monitor serial para verificar se há bouncing
         a++;
 
-        // Liga o LED configurando o pino LED_PIN para nível alto.
+        // Liga os LEDs configurando os pinos para nível alto.
         gpio_put(VERDE, true);
         gpio_put(AZUL, true);
         gpio_put(VERMELHO, true);
 
-        // Define 'led_active' como true para indicar que o LED está aceso.
+        // Definir o booleano para travar o botão de funcionar enquanto a rotina dos botões estiverem funcionando
         led_active = true;
 
+        // Função que vai programar o clock do evento a cada 3 segundos
         add_alarm_in_ms(3000, turn_off_callback, NULL, false);
     }
 }
