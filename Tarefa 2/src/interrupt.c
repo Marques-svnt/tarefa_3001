@@ -29,7 +29,7 @@ void gpio_irq_handler(uint gpio, uint32_t events)
     // Condição que vai disparar a função apenas quando os leds estiverem desligados e realizar o debounce no press do botão
     if (gpio == BUTTON_A && debounce(&last_time_A, 200000) && led_active == false)
     {
-
+        printf("Botão foi pressionado e está travado\n");
         last_time_A = current_time;
         printf("A: %d\n", a); // Para controle quando se usa o monitor serial para verificar se há bouncing
         a++;

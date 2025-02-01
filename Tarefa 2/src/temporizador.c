@@ -12,6 +12,7 @@ int64_t turn_off_callback(alarm_id_t id, void *user_data)
 {
     if (LED_PINO != 13)
     {
+        printf("Apagando led\n"); // Mensagem para monitoramento serial
         gpio_put(LED_PINO, false);
         LED_PINO++;
         return 3000*1000;
@@ -21,6 +22,7 @@ int64_t turn_off_callback(alarm_id_t id, void *user_data)
         gpio_put(LED_PINO, false);
         LED_PINO = 11;
         led_active = false;
+        printf("Leds apagados, botão pode ser pressionado\n");
         return 0;
     }
 }
