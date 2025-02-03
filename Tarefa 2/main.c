@@ -17,7 +17,7 @@ int main()
     // Loop Principal
     while (true)
     {
-        sleep_ms(1000);                // Reduz o uso da CPU
-        printf("Tempo passando...\n"); // Mensagem para verificar passagem de tempo
+        //sleep_ms(1000);                // Reduz o uso da CPU
+        //printf("Tempo passando...\n"); // Mensagem para verificar passagem de tempo
     }
 }
